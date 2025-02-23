@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { Investment } from './investment.model';
+import { Component, inject } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
+import { InvestmentService } from './investment.service';
 
 @Component({
   selector: 'app-investment-result',
@@ -10,5 +10,9 @@ import { CurrencyPipe } from '@angular/common';
   styleUrl: './investment-result.component.css'
 })
 export class InvestmentResultComponent {
-  @Input() investmentResults?: Investment[];
+  private investmentService = inject(InvestmentService);
+  // we use get here to make sure that the investmentResults is available in the template
+  get investmentResults() {
+    return this.investmentService.investmentResults;
+  }
 }
