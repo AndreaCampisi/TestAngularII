@@ -1,16 +1,24 @@
+@if (!investmentResults) {
+<p class="center">fill the form and press calculate to see the investment</p>
+}@else {
 <table>
-    <thead>
-        <th>Year</th>
-        <th>Investment Value</th>
-        <th>Investment (Year)</th>
-        <th>Investment Interest</th>
-        <th>Investment Capital</th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              
-            </td>
-        </tr>
-    </tbody>
+  <thead>
+    <th>Year</th>
+    <th>Investment Value</th>
+    <th>Investment (Year)</th>
+    <th>Investment Interest</th>
+    <th>Investment Capital</th>
+  </thead>
+  <tbody>
+    @for (investmentResult of investmentResults; track investmentResult.year) {
+    <tr>
+      <td>{{ investmentResult.year }}</td>
+      <td>{{ investmentResult.valueEndOfYear | currency:"EUR" }}</td>
+      <td>{{ investmentResult.interest | currency:"EUR"}}</td>
+      <td>{{ investmentResult.totalInterest | currency:"EUR"}}</td>
+      <td>{{ investmentResult.totalAmountInvested | currency:"EUR"}}</td>
+    </tr>
+    }
+  </tbody>
 </table>
+}

@@ -1,4 +1,4 @@
-export interface CalculateData {
+export interface InvestimentInput {
     initialInvestment: number;
     annualInvestment: number;
     expectedReturn: number;
